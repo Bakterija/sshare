@@ -1,6 +1,7 @@
 ### The primary goal of this project was to try and learn some more html, css, javascript, python flask    
     
 ### sshare is a flask webapp that has
+ - Very good performance even on a raspberry pi
  - Simple authentication
  - File uploading for authenticated users
  - Anonymous file downloading
