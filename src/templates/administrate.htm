@@ -1,0 +1,78 @@
+{% extends "user_base.htm" %}
+{% block content %}
+<div class="w3-container" id="stats" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Users</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+<div>
+    <table style="width:100%">
+    <tr>
+        <td>
+            <input class="w3-input w3-border" type="text"
+            name="Name" placeholder="Name" id="new_user_name">
+        </td>
+        <td>
+            <input class="w3-input w3-border" type="password"
+            name="Password" placeholder="password" id="new_user_password">
+        </td>
+        <td>
+            <button type="submit" onclick="add_user()"
+            class="w3-button w3-red">Add new</button>
+        </td>
+    </tr>
+    {% for k, v in manager.users.items() %}
+        <tr>
+            <td>
+                {{ v.id }}
+            </td>
+            <td>
+                <button type="submit" class="w3-button w3-red"
+                onclick="remove_user('{{ v.id }}')"
+                >Remove</button>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script>
+function add_user(element) {
+    var name = document.getElementById("new_user_name").value;
+    var password = document.getElementById("new_user_password").value;
+    // var rurl = {{ manager.root }};
+    // window.location = rurl + "/administrate/add_user"
+    // console.log('NOTIEK!', name, password)
+    var xhr = new XMLHttpRequest();
+    var url = "add_user";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // var json = JSON.parse(xhr.responseText);
+            location.reload();
+        }
+    };
+    var data = JSON.stringify({"name": name, "password": password});
+    xhr.send(data);
+// captionText.innerHTML = element.alt;
+}
+
+function remove_user(uid) {
+    var xhr = new XMLHttpRequest();
+    var url = "remove_user";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // var json = JSON.parse(xhr.responseText);
+            location.reload();
+        }
+    };
+    var data = JSON.stringify({"uid": uid});
+    xhr.send(data);
+// captionText.innerHTML = element.alt;
+}
+</script>
+{% endblock %}

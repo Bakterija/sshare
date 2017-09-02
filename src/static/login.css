@@ -1,0 +1,45 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    background-size: 100% 100%;
+}
+form {
+    /*nice thing of auto margin if display:flex; */
+    /*it centers both horizontal and vertical :) */
+    margin: auto;
+}
+
+h1 {
+    color: white;
+}
+label {
+    color: white;
+}
+
+#title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    visibility: hidden;
+}
+
+@media screen and (min-height: 400px){
+#title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    visibility: visible;
+}}
+
+#div_login {
+    width:  50%;
+    min-width: 6cm;
+    max-width: 10cm;
+    overflow: hidden;
+    text-align: left;
+    margin: auto auto;
+}

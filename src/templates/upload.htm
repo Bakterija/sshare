@@ -1,0 +1,26 @@
+{% extends "user_base.htm" %}
+{% block head %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+<script src="{{ manager.root }}/static/upload.js"></script>
+{% endblock %}
+{% block content %}
+<div class="w3-container" id="stats" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Select and upload</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+<p>
+    <form method=post enctype=multipart/form-data id="manform">
+        <p><input type=file name=file>
+        <input type=submit value=Upload>
+    </form>
+
+    <div class="progress" id="progbar">
+        <div class="bar"></div >
+        <div class="percent">0%</div >
+        <label id="speedlabel"></label>
+
+<p><font color="red">
+    {{ err }}
+</p></font>
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>{{ TITLE }}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="{{ manager.root }}/static/centered.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ manager.root }}/static/webutils.js"></script>
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Server state information -->
+<div class="w3-container" id="div0" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>File</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>
+        ID: {{ ulfile.id }}<br>
+        Name: {{ ulfile.name }}<br>
+        Size: <span class="bytes-to-mb">{{ ulfile.size }}</span><br>
+    </p>
+    <p>
+        <a class="w3-button w3-red"
+        href="{{ manager.root }}/download_file/{{ ulfile.id }}">Direct link</a>
+
+        <a class="w3-button w3-red"
+        href="{{ manager.root }}/download_file/{{ ulfile.id }}"
+        download="{{ ulfile.name}}">Download</a>
+    </p>
+
+</body>
+<script>
+$(document).ready(function(){
+    bytesToMb();
+});
+</script>
+</html>

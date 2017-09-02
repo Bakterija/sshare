@@ -1,0 +1,17 @@
+{% extends "user_base.htm" %}
+{% block content %}
+<!-- Server state information -->
+<div class="w3-container" id="stats" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Stats.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>
+        Uptime: {{ manager.uptime_minutes }} minutes <br>
+        Requests total: {{ manager.requests_total }} <br>
+        Requests per second: {{ manager.requests_per_second }} <br>
+        File count: {{ manager.uploaded_file_count }} <br>
+        Free space: {{ manager.free_space }} MB <br>
+        Share directory: {{ manager.dir_file_share }} <br>
+        Max share usage: {{ manager.max_file_share }} <br>
+    </p>
+</div>
+{% endblock %}

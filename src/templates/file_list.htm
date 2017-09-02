@@ -1,0 +1,97 @@
+{% extends "user_base.htm" %}
+{% block style %}
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    text-align: left;
+    /*text-align: center;*/
+    /*vertical-align: top;*/
+    padding: 0.1cm;
+    /*height: 50px;*/
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="w3-container" id="stats" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Files</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+<div>
+    {% if files %}
+    <table style="width:100%">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Size
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+    {% for k, v in files %}
+        {% set flink = '%s/file/%s' % (manager.root, v['id']) %}
+        <tr>
+            <td class="{{ v["class"] }}">
+                <a href="{{ flink }}">{{ v["id"] }}</a>
+            </td>
+            <td class="{{ v["class"] }}">
+                {% if v["uploaded"] %}
+                <a href="{{ flink }}">{{ v["name"] }}</a>
+                {% else %}
+                {{ v["name"] }}
+                {% endif %}
+            </td>
+            <td class="{{ v["class"] }}">
+                <span class="bytes-to-mb">{{ v["size"] }}</span>
+            </td>
+            {% if v["uploaded"] %}
+            <td>
+                <a class="w3-button w3-red"
+                href="{{ manager.root }}/remove_file/{{ v["id"] }}">Remove</a>
+            </td>
+                <td>
+                    <button class="w3-button w3-red"
+                    onclick="copyTextToClipboard('{{ manager.web_url }}{{ flink }}')">
+                    Copy link</button>
+                </td>
+            </td>
+            {% else %}
+            </td>
+                <td>
+                </td>
+                <td>
+                    <a class="w3-button w3-red"
+                    href="{{ manager.root }}/add_private_file/{{ v["name"] }}">
+                    Add</a>
+                </td>
+            </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    {% endif %}
+    {% if not files %}
+    No files on server
+    {% endif %}
+    </table>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script>
+$(document).ready(function(){
+    bytesToMb();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<title>{{ TITLE }}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="{{ manager.root }}/static/login.css">
+<style>
+    body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+    body {font-size:16px;
+        background-image: url(
+            "{{ manager.root }}{{ manager.login_background_image }}");
+        background-color: rgb({{ manager.login_background_color_string}});
+    }
+    .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+    .w3-half img:hover{opacity:1}
+</style>
+<body>
+    <h1 id="title">
+        {{ TITLE }}
+    </h1>
+
+    <div id=div_login>
+        <form method="post">
+            <div class="w3-section">
+                <label>User name</label>
+                <input class="w3-input w3-border" type="text"
+                name="username" autocomplete="on"
+                value="{{ request.form.username }}" required>
+            </div>
+            <div class="w3-section">
+                <label>Password</label>
+                <input class="w3-input w3-border" type="password"
+                name="password" autocomplete="on"
+                value="{{ request.form.password }}" required>
+            </div>
+            <button type="submit"
+            class="w3-button w3-block w3-padding-large w3-red
+            w3-margin-bottom">Log in</button>
+        </form>
+        <div class="w3-text-red" id="div_message">
+            {{ message }}
+        </div>
+    </div>
+
+
+</body>
+</html>
+<!-- <script>
+window.setInterval(function(){
+    var div_login = document.getElementById('div_login').style;
+    var w = window;
+    var a;
+    var b;
+    b = w.innerWidth * 0.5;
+    a = "{0}px".formatUnicorn(b.toString());
+    console.log('KAS NOTIEK!!!', w.innerWidth, a, b);
+    div_login.width = a;
+}, 100);
+</script> -->
