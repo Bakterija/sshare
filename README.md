@@ -2,6 +2,7 @@
     
 ### sshare is a flask webapp that has
  - Very good performance even on a raspberry pi
+ - Administration page for adding/removing users and later also adjusting other properties
  - Simple authentication
  - File uploading for authenticated users
  - Anonymous file downloading
