@@ -14,3 +14,6 @@
  - Any user can add and remove any other user (I am the only user right now and don't have any need to add a more complex system)
  - Config file and uploaded files are stored in $USER_HOME%/.config/github_bakterija/ss_share/ on linux and $USER_HOME%/github_bakterija/ss_share/ on others
  
+ ### Screenshot
+ ![ScreenShot](https://github.com/Bakterija/sshare/blob/master/doc/screenshot.png)
+ 
